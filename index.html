@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="恋愛や結婚の悩みを整理する、40分の無料オンライン個別相談。">
+  <title>ゆた塾｜無料オンライン個別相談</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a href="./" class="site-logo" aria-label="ゆた塾 ホーム"><img src="yutajuku-logo.png" alt="ゆた塾 マリッジコンサルタント"></a>
+    <a href="#entry" class="header-cta"><b>✓</b><span>無料相談</span></a>
+  </header>
+
+  <main class="page-wrap">
+    <section class="simple-intro">
+      <div class="breadcrumb">⌂ <span>›</span> オンライン個別相談</div>
+      <h1>オンライン個別相談</h1>
+      <p>40分間の無料オンライン個別相談では、ご自身の今の状況や恋愛・結婚のお悩み、理想を整理しながら、これからの活動についてアドバイザーに相談できます。</p>
+      <p>無理な営業や勧誘は一切行っておりませんので、まずはお気軽にご相談ください。</p>
+    </section>
+
+    <section class="points-list" aria-label="相談のポイント">
+      <article class="point-card"><p>POINT. <strong>01</strong></p><h2>いまの状況を整理</h2><div>これまでの恋愛や現在の状況、これから大切にしたいことを丁寧にうかがい、気持ちを一緒に整理します。</div></article>
+      <article class="point-card"><p>POINT. <strong>02</strong></p><h2>あなたらしさを発見</h2><div>会話を通して、ご自身では気づきにくい魅力や価値観、相性のヒントを見つけます。</div></article>
+      <article class="point-card"><p>POINT. <strong>03</strong></p><h2>次の一歩をご提案</h2><div>今のあなたに合った活動の選択肢や進め方をご案内します。入会を前提とした相談ではありません。</div></article>
+    </section>
+
+    <section class="faq-section" id="faq">
+      <h2>よくあるご質問</h2>
+      <div class="faq-list">
+        <details><summary><i>Q</i><span>年齢制限はありますか？</span><b>＋</b></summary><div class="answer"><i>A</i><p>特に年齢制限は設けておりません。</p></div></details>
+        <details><summary><i>Q</i><span>相談は本当に無料ですか？ 強く勧誘されませんか？</span><b>＋</b></summary><div class="answer"><i>A</i><p>はい、無料です。また、無理な営業や勧誘は一切行っておりません。ご希望がある場合のみ、サポート内容をご案内します。</p></div></details>
+        <details><summary><i>Q</i><span>オンライン個別相談ではどんな話をしますか？</span><b>＋</b></summary><div class="answer"><i>A</i><p>過去の恋愛や現在のお悩みを中心に、アドバイザーがお話をうかがいます。恋愛相談だけでも大丈夫ですので、お気軽になんでもお話しください。</p></div></details>
+      </div>
+    </section>
+
+    <section class="entry-section" id="entry">
+      <h2>お申し込み</h2>
+      <div id="success" class="form-success" role="status" hidden><div>✓</div><h3>お申し込みを受け付けました</h3><p>ありがとうございます。担当者から日程についてご連絡します。</p><button type="button" id="back-button">入力画面に戻る</button></div>
+      <form class="entry-form" id="entry-form">
+        <input class="honey-field" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div class="name-grid">
+          <label class="field-block"><span class="field-label">姓 <span class="required">必須</span></span><input name="lastName" required></label>
+          <label class="field-block"><span class="field-label">名 <span class="required">必須</span></span><input name="firstName" required></label>
+          <label class="field-block"><span class="field-label">せい <span class="required">必須</span></span><input name="lastKana" required></label>
+          <label class="field-block"><span class="field-label">めい <span class="required">必須</span></span><input name="firstKana" required></label>
+        </div>
+        <fieldset class="field-block"><legend>性別 <span class="required">必須</span></legend><label class="radio"><input type="radio" name="gender" value="男性" required> 男性</label><label class="radio"><input type="radio" name="gender" value="女性"> 女性</label><label class="radio"><input type="radio" name="gender" value="その他"> その他</label></fieldset>
+        <label class="field-block"><span class="field-label">お住まい <span class="required">必須</span></span><select name="prefecture" required><option value="" selected disabled>選択してください</option><option>北海道</option><option>東北</option><option>関東</option><option>中部</option><option>近畿</option><option>中国</option><option>四国</option><option>九州・沖縄</option><option>海外</option></select></label>
+        <label class="field-block"><span class="field-label">生年月日 <span class="required">必須</span></span><input name="birthday" type="date" required></label>
+        <label class="field-block"><span class="field-label">電話番号 <span class="required">必須</span></span><input name="tel" type="tel" inputmode="tel" required></label>
+        <label class="field-block"><span class="field-label">メールアドレス <span class="required">必須</span></span><input name="email" type="email" inputmode="email" required><small>※iCloudメール（@icloud.com）以外のアドレスをご入力ください。</small></label>
+        <label class="field-block"><span class="field-label">ゆた塾を知ったきっかけ <span class="required">必須</span></span><select name="source" required><option value="" selected disabled>選択してください</option><option>Instagram</option><option>YouTube</option><option>検索</option><option>ご紹介</option><option>その他</option></select></label>
+        <div class="schedule-grid">
+          <label class="field-block"><span class="field-label">相談希望日（第一希望） <span class="required">必須</span></span><input name="date1" type="date" required></label>
+          <label class="field-block"><span class="field-label">希望開始時間（第一希望） <span class="required">必須</span></span><select name="time1" required data-time><option value="" selected disabled>選択してください</option></select></label>
+          <label class="field-block"><span class="field-label">相談希望日（第二希望） <span class="required">必須</span></span><input name="date2" type="date" required></label>
+          <label class="field-block"><span class="field-label">希望開始時間（第二希望） <span class="required">必須</span></span><select name="time2" required data-time><option value="" selected disabled>選択してください</option></select></label>
+          <label class="field-block"><span class="field-label">相談希望日（第三希望） <span class="optional">任意</span></span><input name="date3" type="date"></label>
+          <label class="field-block"><span class="field-label">希望開始時間（第三希望） <span class="optional">任意</span></span><select name="time3" data-time><option value="" selected disabled>選択してください</option></select></label>
+        </div>
+        <label class="field-block"><span class="field-label">相談のご意向 <span class="required">必須</span></span><select name="intent" required><option value="" selected disabled>選択してください</option><option>まずは話を聞きたい</option><option>活動方法を相談したい</option><option>サービス内容も知りたい</option></select></label>
+        <label class="field-block"><span class="field-label">相談で質問したいこと等 <span class="optional">任意</span></span><textarea name="message" rows="7"></textarea></label>
+        <p class="privacy-copy">このフォームで送信する個人情報は、当社の<a href="#privacy">プライバシーポリシー</a>に従い管理され、メール送信のため外部フォームサービスを経由します。ご同意いただいた上で、送信ボタンを押してください。</p>
+        <label class="consent"><input type="checkbox" required> プライバシーポリシーに同意する</label>
+        <button class="submit-button" type="submit">入力内容を送信する</button>
+        <p class="form-error" role="alert" hidden>送信できませんでした。通信状況をご確認のうえ、もう一度お試しください。</p>
+      </form>
+    </section>
+
+    <section class="notice-box"><h2>お申し込み前のご注意点</h2><ul><li>相談はオンラインを使用したWeb面談になります。</li><li>無理な営業や勧誘は一切行っておりません。</li><li>ご相談内容によってはお受けできない場合がございます。</li><li>恋愛・結婚に関するEmailやSMSを送付する場合がございます。</li><li>お問い合わせからご返信まで2営業日程度かかります。</li></ul></section>
+  </main>
+
+  <footer><img src="yutajuku-logo.png" alt="ゆた塾 マリッジコンサルタント"><span>© 2026 ゆた塾</span></footer>
+  <script src="app.js"></script>
+</body>
+</html>
