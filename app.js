@@ -13,13 +13,10 @@ form.addEventListener("submit",async event=>{
   if(data.get("_honey"))return;
   const get=value(data);
   const payload={
-    "姓":get("lastName"),"名":get("firstName"),"せい":get("lastKana"),"めい":get("firstKana"),
-    "性別":get("gender"),"お住まい":get("prefecture"),"生年月日":get("birthday"),"電話番号":get("tel"),
-    "メールアドレス":get("email"),email:get("email"),"ゆた塾を知ったきっかけ":get("source"),
-    "相談希望日（第一希望）":get("date1"),"希望開始時間（第一希望）":get("time1"),
-    "相談希望日（第二希望）":get("date2"),"希望開始時間（第二希望）":get("time2"),
-    "相談希望日（第三希望）":get("date3"),"希望開始時間（第三希望）":get("time3"),
-    "相談のご意向":get("intent"),"相談で質問したいこと等":get("message"),
+    "お名前":get("name"),"性別":get("gender"),"年齢":get("age"),
+    "メールアドレス":get("email"),email:get("email"),
+    "面談希望日":get("date"),"面談希望開始時間":get("time"),
+    "上記以外の都合の良い日時":get("alternativeDate"),"面談で質問したい事":get("message"),
     _subject:"【ゆた塾】オンライン個別相談のお申し込み",_template:"table",_captcha:"false",
     _url:"https://kawase-creative.github.io/yutajuku-form-demo/"
   };
