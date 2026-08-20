@@ -14,7 +14,7 @@ form.addEventListener("submit",async event=>{
   const get=value(data);
   const payload={
     "お名前":get("name"),"性別":get("gender"),"年齢":get("age"),
-    "メールアドレス":get("email"),_replyto:get("email"),
+    "メールアドレス":get("email"),_replyto:get("email"),_cc:"1641494papa@gmail.com",
     "面談希望日":get("date"),"面談希望開始時間":get("time"),
     "上記以外の都合の良い日時":get("alternativeDate"),"面談で質問したい事":get("message"),
     _subject:"【ゆた塾】オンライン個別相談のお申し込み",_template:"table",_captcha:"false",
@@ -22,7 +22,7 @@ form.addEventListener("submit",async event=>{
   };
   submitButton.disabled=true;submitButton.textContent="送信しています…";errorMessage.hidden=true;
   try{
-    const response=await fetch("https://formsubmit.co/ajax/1641494papa@gmail.com",{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify(payload)});
+    const response=await fetch("https://formsubmit.co/ajax/info@yutajuku.jp",{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify(payload)});
     if(!response.ok)throw new Error();
     form.hidden=true;success.hidden=false;document.getElementById("entry").scrollIntoView({behavior:"smooth"});
   }catch{errorMessage.hidden=false}
