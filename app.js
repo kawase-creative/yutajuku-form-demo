@@ -1,4 +1,4 @@
-const times=["10:00〜","11:00〜","13:00〜","14:00〜","15:00〜","16:00〜","17:00〜","18:00〜","19:00〜"];
+const times=["終日どこでも","9-12時","12-14時","14-16時","16-18時","18-20時","20-22時"];
 document.querySelectorAll("[data-time]").forEach(select=>times.forEach(time=>select.add(new Option(time,time))));
 
 const form=document.getElementById("entry-form");
