@@ -14,7 +14,7 @@ form.addEventListener("submit",async event=>{
   const get=value(data);
   const payload={
     "お名前":get("name"),"性別":get("gender"),"年齢":get("age"),
-    "メールアドレス":get("email"),email:get("email"),
+    "メールアドレス":get("email"),_replyto:get("email"),
     "面談希望日":get("date"),"面談希望開始時間":get("time"),
     "上記以外の都合の良い日時":get("alternativeDate"),"面談で質問したい事":get("message"),
     _subject:"【ゆた塾】オンライン個別相談のお申し込み",_template:"table",_captcha:"false",
