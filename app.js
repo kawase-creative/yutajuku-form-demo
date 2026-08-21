@@ -1,33 +1,41 @@
-const times=["終日どこでも","6-8時","8-12時","12-14時","14-16時","16-18時","18-20時","20-22時","22-24時"];
+const times=["終日どこでも","6-8時","8-10時","10-12時","12-14時","14-16時","16-18時","18-20時","20-22時","22-24時"];
 document.querySelectorAll("[data-time]").forEach(select=>times.forEach(time=>select.add(new Option(time,time))));
 
-const yearSelect=document.querySelector("[data-year]");
-const monthSelect=document.querySelector("[data-month]");
-const daySelect=document.querySelector("[data-day]");
-const today=new Date();
-for(let year=today.getFullYear();year<=today.getFullYear()+2;year++)yearSelect.add(new Option(`${year}年`,String(year)));
-const updateMonths=()=>{
-  const selected=monthSelect.value;
-  monthSelect.length=1;
-  const year=Number(yearSelect.value);
-  const first=year===today.getFullYear()?today.getMonth()+1:1;
-  for(let month=first;month<=12;month++)monthSelect.add(new Option(`${month}月`,String(month)));
-  if([...monthSelect.options].some(option=>option.value===selected))monthSelect.value=selected;
-  updateDays();
+const dateInput=document.querySelector("[data-date]");
+const calendar=document.querySelector("[data-calendar]");
+const calendarTitle=document.querySelector("[data-calendar-title]");
+const calendarDays=document.querySelector("[data-days]");
+const prevButton=document.querySelector("[data-prev]");
+const nextButton=document.querySelector("[data-next]");
+const today=new Date();today.setHours(0,0,0,0);
+const maxDate=new Date(today.getFullYear()+2,11,31);
+let viewDate=new Date(today.getFullYear(),today.getMonth(),1),selectedDate=null;
+const sameDay=(a,b)=>a&&b&&a.getFullYear()===b.getFullYear()&&a.getMonth()===b.getMonth()&&a.getDate()===b.getDate();
+const renderCalendar=()=>{
+  const year=viewDate.getFullYear(),month=viewDate.getMonth();
+  calendarTitle.textContent=`${year}年${month+1}月`;
+  calendarDays.replaceChildren();
+  for(let blank=0;blank<new Date(year,month,1).getDay();blank++)calendarDays.append(document.createElement("span"));
+  const lastDay=new Date(year,month+1,0).getDate();
+  for(let day=1;day<=lastDay;day++){
+    const date=new Date(year,month,day),button=document.createElement("button");
+    button.type="button";button.className="calendar-day";button.textContent=String(day);button.setAttribute("aria-label",`${year}年${month+1}月${day}日`);
+    if(date.getDay()===0)button.classList.add("is-sunday");if(date.getDay()===6)button.classList.add("is-saturday");
+    if(date<today||date>maxDate)button.disabled=true;
+    if(sameDay(date,selectedDate)){button.classList.add("is-selected");button.setAttribute("aria-current","date")}
+    button.addEventListener("click",()=>{selectedDate=date;dateInput.value=`${year}年${month+1}月${day}日`;dateInput.dataset.iso=`${year}-${String(month+1).padStart(2,"0")}-${String(day).padStart(2,"0")}`;closeCalendar();renderCalendar()});
+    calendarDays.append(button);
+  }
+  prevButton.disabled=year===today.getFullYear()&&month===today.getMonth();
+  nextButton.disabled=year===maxDate.getFullYear()&&month===maxDate.getMonth();
 };
-const updateDays=()=>{
-  const selected=daySelect.value;
-  daySelect.length=1;
-  const year=Number(yearSelect.value),month=Number(monthSelect.value);
-  daySelect.disabled=!(year&&month);
-  if(!(year&&month))return;
-  const last=new Date(year,month,0).getDate();
-  const first=year===today.getFullYear()&&month===today.getMonth()+1?today.getDate():1;
-  for(let day=first;day<=last;day++)daySelect.add(new Option(`${day}日`,String(day)));
-  if([...daySelect.options].some(option=>option.value===selected))daySelect.value=selected;
-};
-yearSelect.addEventListener("change",updateMonths);
-monthSelect.addEventListener("change",updateDays);
+const openCalendar=()=>{calendar.hidden=false;dateInput.setAttribute("aria-expanded","true");renderCalendar()};
+const closeCalendar=()=>{calendar.hidden=true;dateInput.setAttribute("aria-expanded","false")};
+dateInput.addEventListener("click",()=>calendar.hidden?openCalendar():closeCalendar());
+dateInput.addEventListener("keydown",event=>{if(event.key==="Enter"||event.key===" "){event.preventDefault();calendar.hidden?openCalendar():closeCalendar()}if(event.key==="Escape")closeCalendar()});
+prevButton.addEventListener("click",()=>{viewDate=new Date(viewDate.getFullYear(),viewDate.getMonth()-1,1);renderCalendar()});
+nextButton.addEventListener("click",()=>{viewDate=new Date(viewDate.getFullYear(),viewDate.getMonth()+1,1);renderCalendar()});
+document.addEventListener("click",event=>{if(!event.target.closest(".date-picker"))closeCalendar()});
 
 const form=document.getElementById("entry-form");
 const success=document.getElementById("success");
@@ -40,11 +48,11 @@ form.addEventListener("submit",async event=>{
   const data=new FormData(form);
   if(data.get("_honey"))return;
   const get=value(data);
-  const preferredDate=`${get("dateYear")}年${get("dateMonth")}月${get("dateDay")}日`;
+  if(!get("date")){dateInput.focus();openCalendar();return}
   const payload={
     "お名前":get("name"),"性別":get("gender"),"年齢":get("age"),
     "メールアドレス":get("email"),_replyto:get("email"),_cc:"1641494papa@gmail.com",
-    "面談希望日":preferredDate,"面談希望開始時間":get("time"),
+    "面談希望日":get("date"),"面談希望開始時間":get("time"),
     "上記以外の都合の良い日時":get("alternativeDate"),"面談で質問したい事":get("message"),
     _subject:"【ゆた塾】オンライン個別相談のお申し込み",_template:"table",_captcha:"false",
     _url:"https://kawase-creative.github.io/yutajuku-form-demo/"
