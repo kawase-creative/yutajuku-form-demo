@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Noto+Sans+JP:wght@400;600;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260821c">
+  <link rel="stylesheet" href="styles.css?v=20260821d">
 </head>
 <body>
   <header class="site-header">
@@ -40,7 +40,8 @@
 
     <section class="entry-section" id="entry">
       <h2>お申し込み</h2>
-      <div id="success" class="form-success" role="status" hidden><div>✓</div><h3>お申し込みを受け付けました。</h3><p>担当者から日程についてご連絡します。</p><button type="button" id="back-button">入力画面に戻る</button></div>
+      <p class="entry-note">1営業日以内に、担当者からご返信させて頂きます。</p>
+      <div id="success" class="form-success" role="status" hidden><div>✓</div><p>お申し込みを受け付けました。1営業日以内に、担当者から日程についてご連絡致します。</p><button type="button" id="back-button">入力画面に戻る</button></div>
       <form class="entry-form" id="entry-form">
         <input class="honey-field" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
         <label class="field-block"><span class="field-label">お名前 <span class="required">必須</span></span><input name="name" autocomplete="name" required></label>
@@ -48,7 +49,7 @@
         <label class="field-block"><span class="field-label">年齢 <span class="required">必須</span></span><input name="age" type="number" inputmode="numeric" min="1" max="120" required></label>
         <label class="field-block"><span class="field-label">メールアドレス <span class="required">必須</span></span><input name="email" type="email" inputmode="email" autocomplete="email" required></label>
         <div class="schedule-grid">
-          <fieldset class="field-block"><legend>面談希望日 <span class="required">必須</span></legend><div class="date-selects"><select name="dateYear" aria-label="面談希望年" required data-year><option value="" selected disabled>年</option></select><select name="dateMonth" aria-label="面談希望月" required data-month><option value="" selected disabled>月</option></select><select name="dateDay" aria-label="面談希望日" required data-day disabled><option value="" selected disabled>日</option></select></div></fieldset>
+          <fieldset class="field-block"><legend>面談希望日 <span class="required">必須</span></legend><div class="date-picker"><input class="date-input" name="date" type="text" placeholder="日付を選択してください" autocomplete="off" readonly aria-haspopup="dialog" aria-expanded="false" data-date><div class="calendar" role="dialog" aria-label="面談希望日を選択" hidden data-calendar><div class="calendar-head"><button class="calendar-nav" type="button" aria-label="前の月" data-prev>‹</button><strong data-calendar-title></strong><button class="calendar-nav" type="button" aria-label="次の月" data-next>›</button></div><div class="calendar-week" aria-hidden="true"><span>日</span><span>月</span><span>火</span><span>水</span><span>木</span><span>金</span><span>土</span></div><div class="calendar-days" data-days></div></div></div></fieldset>
           <label class="field-block"><span class="field-label">面談希望開始時間 <span class="required">必須</span></span><select name="time" required data-time><option value="" selected disabled>選択してください</option></select></label>
         </div>
         <label class="field-block"><span class="field-label"><span class="optional">任意</span> 上記以外でご都合の良い日時があれば教えてください</span><textarea name="alternativeDate" rows="4"></textarea></label>
@@ -61,6 +62,6 @@
   </main>
 
   <footer><img src="yutajuku-logo.png" alt="ゆた塾 マリッジコンサルタント"><span>© 2026 ゆた塾</span></footer>
-  <script src="app.js?v=20260821c"></script>
+  <script src="app.js?v=20260821d"></script>
 </body>
 </html>
